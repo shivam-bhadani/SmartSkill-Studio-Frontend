@@ -5,7 +5,7 @@ const navItemsStudent = [
   },
   {
     name: "My Courses",
-    link: "#"
+    link: "/my-courses"
   },
 ]
 
