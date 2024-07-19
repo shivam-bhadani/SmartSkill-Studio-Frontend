@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -94,7 +93,7 @@ export default function Signup() {
       <TabsContent value="instructor">
         <Card>
           <CardHeader className="text-center text-lg">
-            <CardTitle>Register as Student</CardTitle>
+            <CardTitle>Register as Instructor</CardTitle>
           </CardHeader>
           <CardContent>
             <form>
