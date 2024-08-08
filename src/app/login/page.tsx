@@ -10,6 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginUserSchema, loginUserType } from "@/zod/loginUser";
 import { loginUserAction } from "@/server-actions/loginUserAction";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { fetchApiAction } from "@/server-actions/fetchApiAction";
+import { apiEndPoints } from "@/utils/apiEndPoints";
 
 export default function Login() {
   const {
@@ -25,8 +27,18 @@ export default function Login() {
 
   const submitLoginFormHandler = async (formData: loginUserType) => {
     startTransition(async () => {
-      const result = await loginUserAction(formData);
-      console.log(result);
+      const result = await fetchApiAction(apiEndPoints.LOGIN, {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (result?.statusCode === 200) {
+        localStorage.setItem("jwt_token", result?.responseData?.data.access);
+      } else {
+        setServerErrorMessage(result?.responseData?.message);
+      }
     });
   };
 
@@ -37,7 +49,12 @@ export default function Login() {
           <CardTitle>Login</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit(submitLoginFormHandler)}>
+          {serverErrorMessage && (
+            <div className="my-3 text-center text-xs font-semibold text-red-800">
+              {serverErrorMessage}
+            </div>
+          )}
+          <form method="POST" onSubmit={handleSubmit(submitLoginFormHandler)}>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="email">Email</Label>

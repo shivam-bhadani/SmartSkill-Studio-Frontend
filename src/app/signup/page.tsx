@@ -82,12 +82,12 @@ export default function Signup() {
                   <Label htmlFor="profile_picture">Profile Picture</Label>
                   <Input id="profile_picture" type="file" />
                 </div>
+                <div>
+                  <Button className="w-full">Sign Up</Button>
+                </div>
               </div>
             </form>
           </CardContent>
-          <CardFooter>
-            <Button className="w-full">Sign Up</Button>
-          </CardFooter>
         </Card>
       </TabsContent>
       <TabsContent value="instructor">
@@ -159,12 +159,12 @@ export default function Signup() {
                   <Label htmlFor="about">About</Label>
                   <Textarea placeholder="Write about yourself" id="about" />
                 </div>
+                <div>
+                  <Button className="w-full">Sign Up</Button>
+                </div>
               </div>
             </form>
           </CardContent>
-          <CardFooter>
-            <Button className="w-full">Sign Up</Button>
-          </CardFooter>
         </Card>
       </TabsContent>
     </Tabs>
