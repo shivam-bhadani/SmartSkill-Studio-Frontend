@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginUserSchema, loginUserType } from "@/zod/loginUser";
-import { loginUserAction } from "@/server-actions/loginUserAction";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { fetchApiAction } from "@/server-actions/fetchApiAction";
 import { apiEndPoints } from "@/utils/apiEndPoints";
@@ -23,7 +22,7 @@ export default function Login() {
   });
 
   const [pending, startTransition] = useTransition();
-  const [serverErrorMessage, setServerErrorMessage] = useState<boolean>(false);
+  const [serverErrorMessage, setServerErrorMessage] = useState("");
 
   const submitLoginFormHandler = async (formData: loginUserType) => {
     startTransition(async () => {

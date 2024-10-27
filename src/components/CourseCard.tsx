@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-interface ICourseCard {
+export interface ICourseCard {
   instructor: string;
   title: string;
   slug: string;
